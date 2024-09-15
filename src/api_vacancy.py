@@ -1,5 +1,4 @@
 import requests
-import json
 
 from src.abstract_class import ApiVacancy
 
@@ -52,3 +51,9 @@ class HeadHunterAPI(ApiVacancy):
     def vacancies(self) -> list:
         """ Геттер для вакансий """
         return self.__vacancies
+
+
+if __name__ == '__main':
+    api1 = HeadHunterAPI()
+    api1.get_vacancies('python', 1)
+    print(api1.vacancies)
