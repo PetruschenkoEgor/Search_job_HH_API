@@ -30,7 +30,7 @@ class HeadHunterAPI(ApiVacancy):
 
     def get_vacancies(self, word: str, per_page: int) -> list[dict[str | int]]:
         """ Получение вакансий с hh.ru в формате JSON(как есть, не обработанные) """
-        # Если per_page > 100, то это вызовет ошибку. Условие предотвращает ээту ошибку
+        # Если per_page > 100, то это вызовет ошибку. Условие предотвращает эту ошибку
         if per_page > 100:
             per_page = 100
 
@@ -53,7 +53,7 @@ class HeadHunterAPI(ApiVacancy):
         return self.__vacancies
 
 
-if __name__ == '__main':
+if __name__ == "__main__":
     api1 = HeadHunterAPI()
-    api1.get_vacancies('python', 1)
-    print(api1.vacancies)
+    # print(api1.connect_to_api)
+    print(api1.get_vacancies("Python", 1))
