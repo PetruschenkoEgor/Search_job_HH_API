@@ -1,5 +1,5 @@
 def test_vacancy_init(vacancy):
-    """ Тест конструктора Vacancy """
+    """Тест конструктора Vacancy"""
     assert vacancy.name == "Разработчик"
     assert vacancy.area == "Москва"
     assert vacancy.link == "http:...r"
@@ -10,12 +10,12 @@ def test_vacancy_init(vacancy):
 
 
 def test_vacancy_lt(vacancy, vacancy1):
-    """ Тест в какой вакансии зарплата больше """
+    """Тест в какой вакансии зарплата больше"""
     vac = vacancy > vacancy1
-    assert vac == False
+    assert vac is False
 
 
 def test_vacancy_eq(vacancy, vacancy1):
-    """ Тест на равенство зарплат """
+    """Тест на равенство зарплат"""
     vac = vacancy == vacancy1
-    assert vac == False
+    assert vac is False

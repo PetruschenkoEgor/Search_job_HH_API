@@ -5,7 +5,7 @@ from src.api_vacancy import HeadHunterAPI
 
 @patch("src.api_vacancy.requests.get")
 def test_api_vacancy_requests_get(mock_get, get_json):
-    """ Тест гет запроса """
+    """Тест гет запроса"""
     api1 = HeadHunterAPI()
     mock_get.return_value.status_code = 200
     mock_get.return_value.json.return_value = get_json
@@ -15,7 +15,7 @@ def test_api_vacancy_requests_get(mock_get, get_json):
 
 @patch("src.api_vacancy.requests.get")
 def test_api_vacancy_requests_get_status_code(mock_get):
-    """ Тест гет запроса, если статус код не 200 """
+    """Тест гет запроса, если статус код не 200"""
     api1 = HeadHunterAPI()
     mock_get.return_value.status_code = 404
     mock_get.return_value.json.return_value = 404

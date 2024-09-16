@@ -1,5 +1,5 @@
 class Vacancy:
-    """ Взаимодействие с вакансиями """
+    """Взаимодействие с вакансиями"""
 
     name: str  # название вакансии
     area: str  # город
@@ -15,7 +15,7 @@ class Vacancy:
     __slots__ = ("__name", "__area", "__link", "__description", "__requirements", "__salary_from", "__salary_to")
 
     def __init__(self, name, area, link, description, requirements, salary_from, salary_to):
-        """ Конструктор для класса Vacancy """
+        """Конструктор для класса Vacancy"""
         if not name:
             self.__name = "Название вакансии не указано"
         else:
@@ -47,47 +47,47 @@ class Vacancy:
 
     @property
     def name(self):
-        """ Геттер для названия вакансии """
+        """Геттер для названия вакансии"""
         return self.__name
 
     @property
     def area(self):
-        """ Геттер для города """
+        """Геттер для города"""
         return self.__area
 
     @property
     def link(self):
-        """ Геттер для ссылки на вакансию """
+        """Геттер для ссылки на вакансию"""
         return self.__link
 
     @property
     def salary_from(self):
-        """ Геттер для зарплаты от """
+        """Геттер для зарплаты от"""
         return self.__salary_from
 
     @property
     def salary_to(self):
-        """ Геттер для зарплаты до """
+        """Геттер для зарплаты до"""
         return self.__salary_to
 
     @property
     def description(self):
-        """ Геттер для краткого описания """
+        """Геттер для краткого описания"""
         return self.__description
 
     @property
     def requirements(self):
-        """ Геттер для требований к кандидату """
+        """Геттер для требований к кандидату"""
         return self.__requirements
 
     def __lt__(self, other):
-        """ Сравнение вакансий(в какой вакансии зарплата больше) """
+        """Сравнение вакансий(в какой вакансии зарплата больше)"""
         if not isinstance(other, Vacancy):
             return "Сравнивать между собой можно только экземпляры класса Vacancy"
         return self.__salary_from < other.__salary_from
 
     def __eq__(self, other):
-        """ Сравнение вакансий(на равенство по зарплате) """
+        """Сравнение вакансий(на равенство по зарплате)"""
         if not isinstance(other, Vacancy):
             return "Сравнивать между собой можно только экземпляры класса Vacancy"
         return self.__salary_from == other.__salary_from

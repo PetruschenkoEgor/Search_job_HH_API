@@ -5,20 +5,20 @@ from typing import Any
 from src.abstract_class import Files
 from src.vacancy import Vacancy
 
-PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "test1.json")
+PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "vacancy.json")
 
 
 class JSONSaver(Files):
-    """ Взаимодействие с файлами """
+    """Взаимодействие с файлами"""
 
     def __init__(self, file):
-        """ Конструктор класса JSONSaver """
+        """Конструктор класса JSONSaver"""
         self.__file = file
 
     @staticmethod
     def transformation_vacancy(obj: list[Vacancy] | Vacancy) -> list[dict[str, Any]]:
-        """ Преобразование экземпляра класса Vacancy/списка экземпляров класса Vacancy
-        для записи в JSON-файл(список словарей) """
+        """Преобразование экземпляра класса Vacancy/списка экземпляров класса Vacancy
+        для записи в JSON-файл(список словарей)"""
         list_dict = []
 
         # Если на вход подается экземпляр класса Vacancy, преобразуем его в список
@@ -33,14 +33,14 @@ class JSONSaver(Files):
                 "description": vacancy.description,
                 "requirements": vacancy.requirements,
                 "salary_from": vacancy.salary_from,
-                "salary_to": vacancy.salary_to
+                "salary_to": vacancy.salary_to,
             }
             list_dict.append(dict_obj)
 
         return list_dict
 
     def checking_for_duplication(self, obj: list | Vacancy) -> list[dict]:
-        """ Проверка на дублирование вакансий в файле """
+        """Проверка на дублирование вакансий в файле"""
         # Загружаем вакансии из файла
         vacancies_from_file = self.get_from_json()
         obj = self.transformation_vacancy(obj)
@@ -79,7 +79,7 @@ class JSONSaver(Files):
             return sorted(sorted_list, key=lambda x: x.get("salary_from"))
 
     def add_vacancy_to_json(self, obj: list | Vacancy) -> None:
-        """ Добавление вакансии в файл """
+        """Добавление вакансии в файл"""
         vacancy = self.checking_for_duplication(obj)
         self.delete_vacancy_from_json()
 
@@ -87,7 +87,7 @@ class JSONSaver(Files):
             json.dump(vacancy, outfile, ensure_ascii=False, indent=4)
 
     def get_from_json(self) -> list[dict[str | int]]:
-        """ Получение данных из файла """
+        """Получение данных из файла"""
         try:
             with open(self.__file, "r", encoding="utf-8") as file:
                 data = json.load(file)
@@ -101,7 +101,7 @@ class JSONSaver(Files):
             return []
 
     def get_vacancy_from_json(self, words: str) -> list[dict[str | int]]:
-        """ Получение данных из файла по указанным критериям """
+        """Получение данных из файла по указанным критериям"""
         data_list = []
         # Получение данных из JSON-файла
         data = self.get_from_json()
@@ -119,11 +119,6 @@ class JSONSaver(Files):
         return data_list
 
     def delete_vacancy_from_json(self):
-        """ Удаление информации о вакансиях из файла """
-        with open(self.__file, 'w'):
+        """Удаление информации о вакансиях из файла"""
+        with open(self.__file, "w"):
             pass
-
-
-if __name__ == '__main__':
-    js1 = JSONSaver(PATH_TO_FILE)
-    print(js1.checking_for_duplication([Vacancy("Разработчик", "Москва", "http:...r", "Описание", "Требования", 10000, 20000), Vacancy("Программист", "Москва", "http:...p", "Описание", "Требования", 30000, 40000), Vacancy("Программист-разработчик", "Москва", "http:...p", "Описание", "Требования", 30000, 40000)]))
