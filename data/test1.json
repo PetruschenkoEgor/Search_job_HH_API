@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Разработчик",
+        "area": "Москва",
+        "link": "http:...r",
+        "description": "Описание",
+        "requirements": "Требования",
+        "salary_from": 10000,
+        "salary_to": 20000
+    }
+]

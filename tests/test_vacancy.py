@@ -2,7 +2,7 @@ def test_vacancy_init(vacancy):
     """ Тест конструктора Vacancy """
     assert vacancy.name == "Разработчик"
     assert vacancy.area == "Москва"
-    assert vacancy.link == "http:..."
+    assert vacancy.link == "http:...r"
     assert vacancy.description == "Описание"
     assert vacancy.requirements == "Требования"
     assert vacancy.salary_from == 10000

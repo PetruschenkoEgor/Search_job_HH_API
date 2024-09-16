@@ -5,7 +5,7 @@ from typing import Any
 from src.abstract_class import Files
 from src.vacancy import Vacancy
 
-PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "vacancy.json")
+PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", "test1.json")
 
 
 class JSONSaver(Files):
@@ -122,3 +122,8 @@ class JSONSaver(Files):
         """ Удаление информации о вакансиях из файла """
         with open(self.__file, 'w'):
             pass
+
+
+if __name__ == '__main__':
+    js1 = JSONSaver(PATH_TO_FILE)
+    print(js1.checking_for_duplication([Vacancy("Разработчик", "Москва", "http:...r", "Описание", "Требования", 10000, 20000), Vacancy("Программист", "Москва", "http:...p", "Описание", "Требования", 30000, 40000), Vacancy("Программист-разработчик", "Москва", "http:...p", "Описание", "Требования", 30000, 40000)]))
