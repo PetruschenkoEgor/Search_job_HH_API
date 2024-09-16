@@ -11,7 +11,7 @@ PATH_TO_FILE = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data", 
 class JSONSaver(Files):
     """Взаимодействие с файлами"""
 
-    def __init__(self, file):
+    def __init__(self, file=PATH_TO_FILE):
         """Конструктор класса JSONSaver"""
         self.__file = file
 
